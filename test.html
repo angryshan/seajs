@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hello</title>
+</head>
+<body>
+<h1 id="title">seajs demo</h1>
+<!--<script src="https://cdn.bootcss.com/seajs/3.0.3/sea.js"></script>-->
+<script src="seajs/2.2.0/sea.js"></script>
+
+<script>
+    seajs.config({
+        alias:{
+            'change':'./change.js',
+            'jquery':'./jq.js'
+        }
+    });
+    // seajs.use('./main.js');//同级目录
+    // seajs.use('../main.js');//不同级目录
+    seajs.use(['main','jquery'],function(main,$) {
+        $('#title').after('<button id="show">showText</button>');
+        $('#show').on('click',function() {
+            main.showText()
+        })
+    });
+</script>
+</body>
+</html>
